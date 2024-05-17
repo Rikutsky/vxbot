@@ -13,15 +13,12 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 async def modify_twitter_message(message):
     new_content = message.content
-    if 'https://twitter.com/' in message.content.lower():
-        new_content = new_content.replace('https://twitter.com/', 'https://vxtwitter.com/')
-    if 'https://x.com/' in message.content.lower():
-        new_content = new_content.replace('https://x.com/', 'https://vxtwitter.com/')
+    new_content = new_content.replace('https://twitter.com/', 'https://vxtwitter.com/')
+    new_content = new_content.replace('https://x.com/', 'https://vxtwitter.com/')
     
     if new_content != message.content:
-        new_message = f'{message.author.mention} posted:\nOriginal: {message.content}\nModified: {new_content}'
         await message.delete()
-        await message.channel.send(new_message)
+        await message.channel.send(f'{message.author.mention} posted: {new_content}')
 
 @bot.event
 async def on_ready():
