@@ -15,6 +15,7 @@ async def modify_twitter_message(message):
     new_content = message.content
     new_content = new_content.replace('https://twitter.com/', 'https://vxtwitter.com/')
     new_content = new_content.replace('https://x.com/', 'https://vxtwitter.com/')
+    new_content = new_content.replace('https://www.tiktok.com/', 'https://www.vxtiktok.com/')
     
     if new_content != message.content:
         await message.delete()
